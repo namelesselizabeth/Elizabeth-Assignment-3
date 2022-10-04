@@ -12,22 +12,40 @@ public class UserService {
 
 	//User Array from Stored File
 	User[] users = new User[3];
-	//Parse the data.txt into lines
-	String[] array = new String[3];
 	
 	// Read the Data from the data.txt file
-		public void readFileSetArray() {
+		public void setUserArray() {
 
 			BufferedReader fileReader = null;
 			
 			try {
+				
 				fileReader = new BufferedReader(new FileReader("data.txt"));
-				int i = 0;
-				String line = null;
+				
+				//Gets number of lines for the array & sets it to linesInFile array
+				int numberOfLine = 0;
 				while (fileReader.readLine() != null) {
-					array[i] = line;
-					i++;
+					
+					numberOfLine++;
 				}
+				//linesInFile[i] can be used to access the i'th line in the file
+				String[] linesInFile = new String[numberOfLine];
+				
+				numberOfLine = 0; //reusing counter
+				//Reset buffer - returns null if excluded
+				fileReader = new BufferedReader(new FileReader("data.txt"));
+				String line;
+				while ((line = fileReader.readLine()) != null) {
+					linesInFile[numberOfLine] = line;
+					numberOfLine++;
+				}
+				System.out.println(linesInFile[0]);
+				System.out.println(linesInFile[1]);
+				System.out.println(linesInFile[2]);
+				System.out.println(linesInFile[3]);
+				
+				
+				
 			} catch (FileNotFoundException e) {
 				System.out.println("Oops, file not found");
 				e.printStackTrace();
@@ -44,23 +62,15 @@ public class UserService {
 
 		}
 		
-		public User[] setStoredUsers(String[] input) {
+		//The method will take the file array and parse it
+		public String[] parseStringArray(String[] array) {
 			
-			users[0] = parseTextLine(array[0]);
+			User[] arrays = array;
 			
-			
-		}
-		
-		//The method will take the string array and parse it
-		public String[] parseTextLine(String[] input) {
-			
-			String[] arrays = null;
-			
-			for (String arg : parseTextLine(input)) {
+			for(int i = 0; i < arrays.length; i++) {
 				
-				arrays = arg.split(",");
+				System.out.println(arrays[i]);
 			}
 			
-			return arrays;
 		}
 }

@@ -7,6 +7,9 @@ public class UserLoginApplication {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+		UserService userboy = new UserService();
+		
+		userboy.setUserArray();
 	}
 
 }
