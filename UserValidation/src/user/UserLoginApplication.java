@@ -9,7 +9,15 @@ public class UserLoginApplication {
 
 		UserService userboy = new UserService();
 		
-		userboy.setUserArray();
+	//	userboy.setUserArray();
+		
+	//	userboy.setUserInfoStrings();
+		
+	//	userboy.createUser();
+		
+	//	userboy.setUser(userboy.parseUserInfo(userboy.setUserInfoStrings()));
+		
+		userboy.parseUserInfo();
 	}
 
 }

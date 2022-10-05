@@ -12,11 +12,14 @@ public class UserService {
 
 	//User Array from Stored File
 	User[] users = new User[3];
+	String[] userInfo = new String[3];
 	
 	// Read the Data from the data.txt file
-		public void setUserArray() {
+		@SuppressWarnings("resource")
+		public String[] setUserArray() {
 
 			BufferedReader fileReader = null;
+			String [] linesInFile = null;
 			
 			try {
 				
@@ -29,7 +32,7 @@ public class UserService {
 					numberOfLine++;
 				}
 				//linesInFile[i] can be used to access the i'th line in the file
-				String[] linesInFile = new String[numberOfLine];
+				linesInFile = new String[numberOfLine];
 				
 				numberOfLine = 0; //reusing counter
 				//Reset buffer - returns null if excluded
@@ -38,14 +41,7 @@ public class UserService {
 				while ((line = fileReader.readLine()) != null) {
 					linesInFile[numberOfLine] = line;
 					numberOfLine++;
-				}
-				System.out.println(linesInFile[0]);
-				System.out.println(linesInFile[1]);
-				System.out.println(linesInFile[2]);
-				System.out.println(linesInFile[3]);
-				
-				
-				
+				}			
 			} catch (FileNotFoundException e) {
 				System.out.println("Oops, file not found");
 				e.printStackTrace();
@@ -59,18 +55,42 @@ public class UserService {
 					e.printStackTrace();
 				}
 			  }
+			return linesInFile;
 
 		}
 		
-		//The method will take the file array and parse it
-		public String[] parseStringArray(String[] array) {
+		public String[] setUserInfoStrings() {
+			userInfo = setUserArray();
+			int i;
 			
-			User[] arrays = array;
-			
-			for(int i = 0; i < arrays.length; i++) {
+			for(i = 0; i < userInfo.length; i++) {
 				
-				System.out.println(arrays[i]);
+				userInfo[i] = userInfo[i].toString();
+				//System.out.println("Java String Array " + i + ": " + userInfo[i]);	
 			}
+			
+			return userInfo;
+		}
+		
+		//I dont know how to store this correctly
+		public String[] parseUserInfo() {
+			
+			
+			String[] array = new String[3];
+			array = null;
+			
+			for(String arg : parseUserInfo()) {
+				
+				array = arg.split(",");
+				
+				System.out.println(array[1]);
+			}
+			
+			return array;
+		}
+		
+		public void createUser() {
+
 			
 		}
 }
