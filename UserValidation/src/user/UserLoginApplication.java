@@ -7,17 +7,17 @@ public class UserLoginApplication {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		UserService userboy = new UserService();
+		UserService userEX = new UserService();
 		
-	//	userboy.setUserArray();
+	//	userEX.setUserArray();
 		
-	//	userboy.setUserInfoStrings();
+	//	userEX.setUserInfoStrings();
 		
-	//	userboy.createUser();
+	//	userEX.createUser();
 		
-	//	userboy.setUser(userboy.parseUserInfo(userboy.setUserInfoStrings()));
+	//	userEX.setUser(userboy.parseUserInfo(userboy.setUserInfoStrings()));
 		
-		userboy.parseUserInfo();
+		userEX.parseUserInfo();
 	}
 
 }
