@@ -9,11 +9,11 @@ public class User {
 	private String name;
 	
 	//Constructor, sets the variables
-	public User(String userName, String password, String name) {
+	public User(String [] values) {	//wherever it's used, split the array
 		
-		this.userName = userName;
-		this.password = password;
-		this.name = name;
+		this.userName = values[0];
+		this.password = values[1];
+		this.name = values[3];
 	}
 
 	public String getUserName() {

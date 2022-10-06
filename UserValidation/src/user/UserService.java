@@ -15,8 +15,8 @@ public class UserService {
 	String[] userInfo = new String[3];
 	
 	// Read the Data from the data.txt file
-		@SuppressWarnings("resource")
-		public String[] setUserArray() {
+		
+		public void createUserArray() throws FileNotFoundException, IOException{
 
 			BufferedReader fileReader = null;
 			String [] linesInFile = null;
@@ -25,72 +25,45 @@ public class UserService {
 				
 				fileReader = new BufferedReader(new FileReader("data.txt"));
 				
-				//Gets number of lines for the array & sets it to linesInFile array
+				//Gets number of lines for the array
 				int numberOfLine = 0;
 				while (fileReader.readLine() != null) {
 					
 					numberOfLine++;
 				}
+
 				//linesInFile[i] can be used to access the i'th line in the file
 				linesInFile = new String[numberOfLine];
 				
-				numberOfLine = 0; //reusing counter
+				//Closes first fileReader
+				fileReader.close();
+				
 				//Reset buffer - returns null if excluded
 				fileReader = new BufferedReader(new FileReader("data.txt"));
-				String line;
+				
+				String line = null;
+				int i = 0; //new counter
+				
 				while ((line = fileReader.readLine()) != null) {
 					linesInFile[numberOfLine] = line;
+					users[i] = new User(line.split(","));
 					numberOfLine++;
+					
 				}			
-			} catch (FileNotFoundException e) {
-				System.out.println("Oops, file not found");
-				e.printStackTrace();
-			} catch (IOException e) {
-				System.out.println("Oops, there was an I/O Exception");
-				e.printStackTrace();
 			} finally {
-				try {
+				
 					fileReader.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+				
 			  }
-			return linesInFile;
 
 		}
 		
-		public String[] setUserInfoStrings() {
-			userInfo = setUserArray();
-			int i;
+		public User validateUserInput(String username, String password) {
 			
-			for(i = 0; i < userInfo.length; i++) {
-				
-				userInfo[i] = userInfo[i].toString();
-				//System.out.println("Java String Array " + i + ": " + userInfo[i]);	
-			}
 			
-			return userInfo;
+			
+			return null;
+			
 		}
-		
-		//I dont know how to store this correctly
-		public String[] parseUserInfo() {
-			
-			
-			String[] array = new String[3];
-			array = null;
-			
-			for(String arg : parseUserInfo()) {
-				
-				array = arg.split(",");
-				
-				System.out.println(array[1]);
-			}
-			
-			return array;
-		}
-		
-		public void createUser() {
 
-			
-		}
 }
