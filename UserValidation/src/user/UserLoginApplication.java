@@ -38,12 +38,12 @@ private static String userPassword = null;
 			
 			
 			//Set user equal to the validate user input method to check if it exists in the array
-			User validUser = new User();
-			validUser = userService.validateUserInput(userEmail, userPassword);
+			User isUserValid = new User();
+			isUserValid = userService.validateUserInput(userEmail, userPassword);
 			
-			if (validUser != null) { // will return null if its in the array
+			if (isUserValid != null) { // will return null if its in the array
 				
-				System.out.println("Welcome " + validUser.getName());
+				System.out.println("Welcome " + isUserValid.getName());
 				validLogin = true; //true and break out of while loop
 				
 				input.close();
