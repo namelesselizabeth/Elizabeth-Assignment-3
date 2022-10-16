@@ -9,11 +9,15 @@ public class User {
 	private String name;
 	
 	//Constructor, sets the variables
-	public User(String [] values) {	//wherever it's used, split the array
+	public User(String[] values) {	//wherever it's used, split the array
 		
 		this.userName = values[0];
 		this.password = values[1];
-		this.name = values[3];
+		this.name = values[2];
+	}
+
+	public User() { //no parameter constructor is needed in userloginapplication
+		// TODO Auto-generated constructor stub
 	}
 
 	public String getUserName() {
