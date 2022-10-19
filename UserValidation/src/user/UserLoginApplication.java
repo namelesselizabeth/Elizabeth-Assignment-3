@@ -26,7 +26,7 @@ private static String userPassword = null;
 		boolean validLogin = false;
 		int numberOfLogins = 0;
 		
-		//Continue while loop if valid Login is false and number of logins is less than five
+		//Continue while loop if valid Login is not false and number of logins is less than five
 		while (!validLogin && numberOfLogins < 5) {
 			
 			Scanner input = new Scanner(System.in);
